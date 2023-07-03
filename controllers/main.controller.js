@@ -6,8 +6,7 @@ const gamesJSON = fs.readFileSync(gamesFilePath, 'utf8');
 const games = JSON.parse(gamesJSON)
 
 const mainController = {
-  index: (req, res) => {
-    
+  index: (req, res) => {    
     res.render("index", {
       games
     });
