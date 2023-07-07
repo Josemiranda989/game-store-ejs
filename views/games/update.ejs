@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('../partials/head.ejs', {style:'create.css', title:"Update  Product"}) %>
+
+  <body>
+    <%- include('../partials/header.ejs') %>
+    <main class="d-flex justify-content-center align-items-center br-1">
+      <div class="container rounded">
+        <form
+          action="/games/update/<%= game.id %>?_method=PUT"
+          enctype="multipart/form-data"
+          method="post"
+        >
+          <div class="mb-3 mt-3">
+            <label for="title" class="form-label">Title</label>
+            <input
+              type="text"
+              class="form-control"
+              id="title"
+              name="title"
+              aria-describedby="emailHelp"
+              value="<%= game.title %>"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="formFile" class="form-label">Current image</label>
+            <img
+              style="display: block; width: 200px"
+              src="<%= game.thumbnail %>"
+              alt=""
+            />
+          </div>
+          <div class="mb-3">
+            <label for="formFile" class="form-label">Thumbnail</label>
+            <input
+              name="thumbnail"
+              class="form-control"
+              type="file"
+              id="formFile"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="genre" class="form-label">Genre</label>
+            <select
+              class="form-select"
+              name="genre"
+              aria-label="Default select example"
+            >
+              <option selected value="<%= game.genre %>" > <%= game.genre %></option>
+              <option value="Shooter">Shooter</option>
+              <option value="Strategy">Strategy</option>
+              <option value="Fighting">Fighting</option>
+            </select>
+          </div>
+          <div class="mb-3">
+          <button type="submit" class="btn btn-primary">Submit</button>
+          </div>
+        </form>
+      </div>
+    </main>
+    <%- include('../partials/footer.ejs') %>
+  </body>
+</html>

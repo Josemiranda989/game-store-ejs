@@ -25,6 +25,7 @@ a:hover {
   width: 100%;
   padding: 10px;
   background-color: #bdeb48;
+  z-index: 3;
 }
 
 .header-top {
@@ -61,6 +62,10 @@ a:hover {
 .card-title {
   text-align: center;
   font-size: 20px;
+}
+
+.card-img{
+  max-width: 365px;
 }
 
 .card-platform {

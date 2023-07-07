@@ -1,12 +1,11 @@
 const fs = require('fs');
 const path = require('path');
-
-const gamesFilePath = path.join(__dirname, '../data/games.json');
-const gamesJSON = fs.readFileSync(gamesFilePath, 'utf8');
-const games = JSON.parse(gamesJSON)
+const gamesPath = path.join(__dirname, '../data/games.json')
 
 const mainController = {
+  
   index: (req, res) => {    
+    const games = JSON.parse(fs.readFileSync(gamesPath, "utf8"));
     res.render("index", {
       games
     });

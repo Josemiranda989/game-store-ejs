@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-
+  
   <%- include('./partials/head.ejs', {style:'estilo2.css', title:"Game Store"}) %>
 
   <body>
@@ -24,28 +24,23 @@
     </header>
     <main>
 
-      
       <div class="container">
         
         <% games.forEach(game => { %>
           
           <section class="card">
-          <a  href=<%= game.game_url %> target="_blank">
+          <a  href="/games/detail/<%= game.id %>" >
               <h3 class="card-title"><%= game.title %></h3>
-              <img clas="card-img" src=<%= game.thumbnail %> alt=<%= game.title %> />
+              <img class="card-img" src="<%= game.thumbnail %>"/>
               <p class="card-platform"><%= game.platform %></p>
             </a>
           </section>
 
         <% }) %>
         
-
       </div>
       
     </main>
-    <footer class="footer">
-      <p>Derechos reservados 😑</p>
-      <img src="/img/logo.png" alt="logo" />
-    </footer>
+    <%- include('./partials/footer.ejs') %>
   </body>
 </html>
