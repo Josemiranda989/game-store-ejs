@@ -11,5 +11,7 @@ router.get("/about", function (req, res) {
       "Acerca de nosotros"
   )
 });
+router.get('/get', mainController.getGamesAPI)
+router.post("/create", mainController.postGamesCreate);
 
 module.exports = router

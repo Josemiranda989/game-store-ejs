@@ -5,8 +5,13 @@ const db = require('../database/models')
 
 const mainController = {
   
-  index: async(req, res) => {    
+  index: async (req, res) => {
     const games = JSON.parse(fs.readFileSync(gamesPath, "utf8"));
+     res.render("index", {
+       games
+     });
+  },
+  getGamesAPI: async (req, res) => {    
     const gamesDB = await db.Game.findAll({
       attributes: ['title', 'thumbnail'],
       include: {
@@ -15,11 +20,20 @@ const mainController = {
       }
     });
     res.json(gamesDB)
-   /*  console.log(gamesDB);
-    res.render("index", {
-      games
-    }); */
   },
+  postGamesAPI: async (req, res) => {
+    const response = await db.Game.create(
+      {
+        title: req.body.title,
+        thumbnail: req.body.thumbnail,
+        game_url: req.body.game_url,
+        genre: {
+          name: req.body.name
+        }
+      }, { include: 'genre' }
+    )
+    res.json(response)
+  }
 };
 
 module.exports = mainController;
